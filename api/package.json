@@ -1,0 +1,23 @@
+{
+  "name": "api",
+  "version": "0.1.0",
+  "description": "Backend API in GraphQL",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "prisma generate && yarn clean && tsc --build && yarn copyfiles",
+    "start": "node ../dist/api",
+    "migrate:prod": "npx prisma migrate deploy && node ../dist/api/src/createAdmin.js",
+    "dev": "nodemon index.ts",
+    "test": "jest src",
+    "clean": "rimraf ../dist/api",
+    "copyfiles": "copyfiles src/schema.graphql views/* public/* ../dist/api"
+  },
+  "dependencies": {
+    "apollo-server": "^3.12.0",
+    "graphql": "^16.8.0",
+    "nodemon": "^2.0.13",
+    "ts-node": "^10.2.1"
+  },
+  "devDependencies": {}
+}
