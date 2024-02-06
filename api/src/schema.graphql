@@ -1,0 +1,67 @@
+scalar DateTime
+
+# request types
+
+type Query {
+  products(skip: Int, take: Int, where: ProductWhereInput): [Product]!
+  product(id: ID!): Product
+}
+
+type Mutation {
+  createProduct(data: ProductCreateInput!): Product!
+}
+
+input ProductCreateInput {
+  name: String!
+  price: Float!
+  sku: String!
+  image: String!
+  description: String
+}
+
+input ProductWhereInput {
+  name: StringFilterInput
+  price: Float
+}
+
+# model types
+
+interface BaseModel {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  deletedAt: DateTime
+}
+
+type Attributes {
+  description: String
+}
+
+type Product implements BaseModel {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime
+  deletedAt: DateTime
+
+  name: String!
+  sku: String!
+  price: Float!
+  image: String!
+  attributes: Attributes!
+}
+
+# inputs filters
+
+input StringFilterInput {
+  equals: String
+  in: [String]
+  notIn: [String]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: String
+}

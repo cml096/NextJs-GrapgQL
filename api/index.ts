@@ -1,28 +1,6 @@
-// import * as dotenv from 'dotenv'
-// dotenv.config()
-//
-// import app from './src'
-//
-// app()
+import * as dotenv from 'dotenv'
+dotenv.config()
 
-import { ApolloServer } from 'apollo-server';
-import * as console from 'console'
+import app from './src'
 
-const typeDefs = `
-  type Query {
-    info: String!
-  }
-`;
-
-const resolvers = {
-  Query: {
-    info: () => `This is API in GraphQL`
-  }
-}
-
-const server = new ApolloServer({
-  typeDefs,
-  resolvers
-});
-
-server.listen().then(({url}) => console.log(`Server running on port ${url}`))
+app()

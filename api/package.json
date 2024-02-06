@@ -14,10 +14,14 @@
     "copyfiles": "copyfiles src/schema.graphql views/* public/* ../dist/api"
   },
   "dependencies": {
+    "@prisma/client": "5.1.1",
     "apollo-server": "^3.12.0",
     "graphql": "^16.8.0",
     "nodemon": "^2.0.13",
+    "prisma": "^5.1.1",
     "ts-node": "^10.2.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@prisma/client": "^5.1.1"
+  }
 }
